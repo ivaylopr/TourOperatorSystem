@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourOperatorSystem", "TourOperatorSystem\TourOperatorSystem.csproj", "{4ACF0AE0-0D2E-469C-9DAB-9FDDE89F434E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourOperatorSystem", "TourOperatorSystem\TourOperatorSystem.csproj", "{4ACF0AE0-0D2E-469C-9DAB-9FDDE89F434E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourOperatorSystem.Core", "TourOperatorSystem.Core\TourOperatorSystem.Core.csproj", "{061AE377-EEDF-4764-854C-C9982A5F5E43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourOperatorSystem.Infrastructure", "TourOperatorSystem.Infrastructure\TourOperatorSystem.Infrastructure.csproj", "{0FF1B407-2B18-4ADA-B992-E1633B90A31E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{4ACF0AE0-0D2E-469C-9DAB-9FDDE89F434E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ACF0AE0-0D2E-469C-9DAB-9FDDE89F434E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ACF0AE0-0D2E-469C-9DAB-9FDDE89F434E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{061AE377-EEDF-4764-854C-C9982A5F5E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{061AE377-EEDF-4764-854C-C9982A5F5E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{061AE377-EEDF-4764-854C-C9982A5F5E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{061AE377-EEDF-4764-854C-C9982A5F5E43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF1B407-2B18-4ADA-B992-E1633B90A31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF1B407-2B18-4ADA-B992-E1633B90A31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF1B407-2B18-4ADA-B992-E1633B90A31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF1B407-2B18-4ADA-B992-E1633B90A31E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
