@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TourOperatorSystem.Data;
+using TourOperatorSystem.Infrastructure.Data;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

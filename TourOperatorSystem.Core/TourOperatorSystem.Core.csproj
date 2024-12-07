@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TourOperatorSystem.Infrastructure\TourOperatorSystem.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
