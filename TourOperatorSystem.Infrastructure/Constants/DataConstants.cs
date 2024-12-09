@@ -18,6 +18,7 @@
         public const int HotelLocationMinLength = 10;
         public const int HotelReviewMaxLength = 500;
         public const int HotelReviewMinLength = 50;
+        public const int HotelImageMaxLength = 7340032;
 
         public const int RoomTitleMaxLength = 30;
         public const int RoomTitleMinLength = 5;

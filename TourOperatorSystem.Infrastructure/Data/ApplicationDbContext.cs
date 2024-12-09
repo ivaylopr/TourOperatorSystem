@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TourOperatorSystem.Infrastructure.Data.DataSeed;
 using TourOperatorSystem.Infrastructure.Data.Models;
 
 namespace TourOperatorSystem.Infrastructure.Data
@@ -43,6 +44,17 @@ namespace TourOperatorSystem.Infrastructure.Data
                 .HasOne(h => h.VacationCategory)
                 .WithMany(vc => vc.Hotels)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.ApplyConfiguration(new VacationCategoryConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new AgentConfiguration());
+            builder.ApplyConfiguration(new HotelConfiguration());
+            builder.ApplyConfiguration(new RoomConfiguration());
+            builder.ApplyConfiguration(new VacationConfiguration());
+            builder.ApplyConfiguration(new SeasonalEmploymentConfiguration());
+            builder.ApplyConfiguration(new CantidateConfiguration());
+            builder.ApplyConfiguration(new HotelRoomConfiguration());
+
             base.OnModelCreating(builder);
         }
         public DbSet<Agent> Agents { get; set; }

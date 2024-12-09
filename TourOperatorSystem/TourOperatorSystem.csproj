@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.32" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TourOperatorSystem.Core\TourOperatorSystem.Core.csproj" />
+  </ItemGroup>
+
 </Project>
