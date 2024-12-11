@@ -1,0 +1,56 @@
+﻿@model AllHotelsServiceModel
+@{
+    ViewData["Title"] = "All Hotels";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="container">
+    <div class="row">
+        @foreach (var hotel in Model.Hotels)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="data:image/jpeg;base64,@hotel.Image" class="card-img-top" alt="@hotel.Name" width="500" height="200" alt="Description">
+                    <div class="card-body">
+                        <h5 class="card-title">@hotel.Name</h5>
+                        <p class="card-text">@hotel.Location</p>
+                        <a href="@Url.Action("Details", "Hotel", new { id = hotel.Id })" class="btn btn-primary">Details</a>
+                        @* @if (await agentService.AgentWithIdExistsAsync(User.Id()) || User.IsAdmin())
+                        { *@
+
+                        <a href="@Url.Action("Edit", "Hotel", new { id = hotel.Id })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("Delete", "Hotel", new { id = hotel.Id })" class="btn btn-danger">Delete</a>
+                        @* } *@
+                    </div>
+                </div>
+            </div>
+            @* <partial name="_HotelPartial" model="@hotel" /> *@
+        }
+    </div>
+</div>
+
+@if (Model.TotalHotelCount > Model.HotelsPerPage)
+{
+    var maxPage = Math.Ceiling((double)Model.TotalHotelCount /
+        Model.HotelsPerPage);
+    <div class="row mt-5">
+        <div class="col-md-6 d-flex justify-content-center">
+            @if (Model.CurrentPage > 1)
+            {
+                <a class="btn btn-primary" asp-controller="Hotel" asp-action="All" asp-route-currentPage="@(Model.CurrentPage-1)">Previous</a>
+            }
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            @if (Model.CurrentPage < maxPage)
+            {
+                <a class="btn btn-primary" asp-controller="Hotel" asp-action="All" asp-route-currentPage="@(Model.CurrentPage + 1)">Next</a>
+               
+            }
+        </div>
+    </div>
+}
+@* @section Scripts {
+	<partial name="_HotelPartial" />
+} *@

@@ -1,0 +1,83 @@
+﻿﻿@model HotelFormModel
+
+
+
+	<div>
+		<label asp-for="Name"></label>
+		<input asp-for="Name" class="form-control" placeholder="Hotel name..." />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="HotelReview"></label>
+		<input asp-for="HotelReview" class="form-control" placeholder="Hotel review..." />
+		<span asp-validation-for="HotelReview" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Location"></label>
+		<input asp-for="Location" class="form-control" placeholder="Hotel location..." />
+		<span asp-validation-for="Location" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Spa"></label>
+		<input asp-for="Spa" class="form-control" placeholder="Spa aveilable..." />
+		<select asp-for="Spa" class="form-control">
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+		</select>
+		<span asp-validation-for="Spa" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Pool"></label>
+		<input asp-for="Pool" class="form-control" />
+		<select asp-for="Pool" class="form-control">
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+		</select>
+		<span asp-validation-for="Pool" class="text-danger"></span>
+	</div><div>
+		<label asp-for="ChildrenAnimators"></label>
+		<input asp-for="ChildrenAnimators" class="form-control" />
+		<select asp-for="ChildrenAnimators" class="form-control">
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+		</select>
+		<span asp-validation-for="ChildrenAnimators" class="text-danger"></span>
+	</div></div>
+
+	<div>
+		<label asp-for="AllInclusivePrice"></label>
+		<input asp-for="AllInclusivePrice" class="form-control" />
+		<span asp-validation-for="AllInclusivePrice" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="CategoryStars"></label>
+		<input asp-for="CategoryStars" class="form-control" />
+		<span asp-validation-for="CategoryStars" class="text-danger"></span>
+	</div>
+
+	<div>
+		<label asp-for="Capacity"></label>
+		<input asp-for="Capacity" class="form-control" />
+		<span asp-validation-for="Capacity" class="text-danger"></span>
+	</div>
+
+
+	<div>
+		<label asp-for="Rating"></label>
+		<input asp-for="Rating" class="form-control" />
+		<span asp-validation-for="Rating" class="text-danger"></span>
+	</div>
+
+	<div>
+		<label asp-for="VacationCategoryId"></label>
+		<input asp-for="VacationCategoryId" class="form-control" />
+		<span asp-validation-for="VacationCategoryId" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Image"></label>
+		<input type="file" name="imageFile" accept="image/*" class="form-control" />
+		<span asp-validation-for="Image" class="text-danger"></span>
+		<img id="previewImage" src="#" alt="Your image" style="display: none; width: 100px; height: 100px;" />
+
+	</div>
+	<button type="submit">Add</button>
