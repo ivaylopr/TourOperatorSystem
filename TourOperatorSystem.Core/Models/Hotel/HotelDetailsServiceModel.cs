@@ -14,6 +14,6 @@ namespace TourOperatorSystem.Core.Models.Hotel
 		public decimal? AllInclusivePrice { get; set; }
 		public string Location { get; set; } = string.Empty;
 		public double? Rating { get; set; }
-		public string Image { get; set; } = string.Empty;
+		public string? Image { get; set; } = string.Empty;
 	}
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.EntityFrameworkCore;
 using TourOperatorSystem.Core.Contracts;
 using TourOperatorSystem.Core.Models.Home;
 using TourOperatorSystem.Core.Models.Hotel;
@@ -144,7 +146,7 @@ namespace TourOperatorSystem.Core.Services
                 {
                     Id = h.Id,
                     Name = h.Name,
-                    Image = h.Image
+                    Image = Convert.ToBase64String(h.Image ?? Array.Empty<byte>())
                 }).ToListAsync();
         }
 
@@ -164,11 +166,21 @@ namespace TourOperatorSystem.Core.Services
                     Capacity = h.Capacity,
                     CategoryStars = h.CategoryStars,
                     Rating = h.Rating ?? null,
-                    Image = h.Image,
+                    Image = h.Image != null ? ConvertToFormFile(h.Image, "image.png", "image/png") : null,
                     VacationCategoryId = h.VacationCategoryId
                 })
                 .FirstOrDefaultAsync();
 
+        }
+
+        private IFormFile ConvertToFormFile(byte[] image, string imageName, string contentType)
+        {
+            var stream = new MemoryStream(image);
+            return new FormFile(stream, 0, image.Length, "file", imageName)
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = contentType
+            };
         }
 
         public async Task<HotelServiceModel> GetHotelToDeleteByIdAsync(int id)
@@ -180,7 +192,7 @@ namespace TourOperatorSystem.Core.Services
                     Id = h.Id,
                     Name = h.Name,
                     Location = h.Location,
-                    Image = h.Image,
+                    Image = Convert.ToBase64String(h.Image ?? Array.Empty<byte>()),
                     VacationType = h.VacationCategory.VacationType
                 }).FirstAsync();
         }
@@ -189,7 +201,7 @@ namespace TourOperatorSystem.Core.Services
         {
             return await repository.AllReadOnly<Hotel>()
                 .Where(h => h.Id == id)
-                .Select(h => h.Image)
+                .Select(h => Convert.ToBase64String(h.Image ?? Array.Empty<byte>()))
                 .FirstAsync();
         }
 
@@ -209,7 +221,7 @@ namespace TourOperatorSystem.Core.Services
                     AllInclusivePrice = h.AllInclusivePrice,
                     Location = h.Location,
                     Rating = h.Rating,
-                    Image = h.Image
+                    Image = h.Image != null ? $"data:image/png;base64,{Convert.ToBase64String(h.Image)}" : null
                 })
                 .FirstAsync();
         }
@@ -228,7 +240,7 @@ namespace TourOperatorSystem.Core.Services
                 {
                     Id = h.Id,
                     Name = h.Name,
-                    Image = h.Image,
+                    Image = h.Image != null ? $"data:image/png;base64,{Convert.ToBase64String(h.Image)}" : null,
                     Rating = h.Rating ?? 0
                 })
                 .ToListAsync();
@@ -239,4 +251,5 @@ namespace TourOperatorSystem.Core.Services
             return await repository.AllReadOnly<VacationCategory>().AnyAsync(vc => vc.Id == id);
         }
     }
+    
 }

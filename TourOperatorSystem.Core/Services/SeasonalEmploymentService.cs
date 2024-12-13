@@ -77,7 +77,7 @@ namespace TourOperatorSystem.Core.Services
 					StartDate = s.StartDate.ToString(DataConstants.DateFormat),
 					EndDate = s.EndDate.ToString(DataConstants.DateFormat),
 					AgentPhoneNumber = s.Agent.PhoneNumber,
-					Hotel = s.Hotel.Image,
+					Hotel = s.Hotel.Image != null ? $"data:image/png;base64,{Convert.ToBase64String(s.Hotel.Image)}" : null,
 					HotelName = s.Hotel.Name,
 					IsActive = s.IsActive
 				}).FirstAsync();

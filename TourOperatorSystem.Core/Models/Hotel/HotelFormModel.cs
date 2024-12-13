@@ -42,7 +42,7 @@ namespace TourOperatorSystem.Core.Models.Hotel
 		public double? Rating { get; set; }
         [Required(ErrorMessage = RequiredMessage)]
         [Display(Name = "Image")]
-        public IFormFile Image { get; set; } = null!;
+        public IFormFile? Image { get; set; } = null!;
         [Required(ErrorMessage = RequiredMessage)]
 		[Display(Name = "Vacation category")]
 		public int VacationCategoryId { get; set; }

@@ -54,8 +54,8 @@ namespace TourOperatorSystem.Core.Services
 					AgentEmail = v.Agent.User.Email,
 					AgentPhoneNumber = v.Agent.PhoneNumber,
 					HotelName = v.Hotel.Name,
-					HotelImage = v.Hotel.Image
-				})
+					HotelImage = v.Hotel.Image != null ? $"data:image/png;base64,{Convert.ToBase64String(v.Hotel.Image)}" : null
+                })
 				.ToListAsync();
 			var activeVacationResult = await repository.AllReadOnly<Vacation>().Where(v => v.IsActive == true).CountAsync();
 			int totalVacations = activeVacationResult;
@@ -156,8 +156,8 @@ namespace TourOperatorSystem.Core.Services
 					AgentEmail = v.Agent.User.Email,
 					AgentPhoneNumber = v.Agent.PhoneNumber,
 					HotelName = v.Hotel.Name,
-					HotelImage = v.Hotel.Image
-				}).FirstOrDefaultAsync();
+					HotelImage = v.Hotel.Image != null ? $"data:image/png;base64,{Convert.ToBase64String(v.Hotel.Image)}" : null
+                }).FirstOrDefaultAsync();
 		}
 
 		public async Task<bool> IsInVacationUserById(string id, int vacationId)
@@ -193,7 +193,7 @@ namespace TourOperatorSystem.Core.Services
 					AgentEmail = vc.Vacation.Agent.User.Email,
 					AgentPhoneNumber = vc.Vacation.Agent.PhoneNumber,
 					HotelName = vc.Vacation.Hotel.Name,
-					HotelImage = vc.Vacation.Hotel.Image
+					HotelImage = vc.Vacation.Hotel.Image != null ? $"data:image/png;base64,{Convert.ToBase64String(vc.Vacation.Hotel.Image)}" : null
 
 				}).ToListAsync();
 			int totalVacationsCount = await repository.AllReadOnly<VacationCustomer>()

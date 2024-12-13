@@ -61,7 +61,7 @@ namespace TourOperatorSystem.Areas.Admin.Controllers
 				return View(model);
 			}
 			string filePathValue = $"/images/{fileName}";
-			int newHotelId = await hotelService.CreateHotelAsync(model, filePathValue);
+			int newHotelId = await hotelService.CreateHotelAsync(model);
 			return RedirectToAction("Details", "Hotel", new { area = "", id = newHotelId });
 		}
 	}
