@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using static TourOperatorSystem.Core.Constants.MessageConstants;
+using static TourOperatorSystem.Infrastructure.Constants.DataConstants;
 
 namespace TourOperatorSystem.Core.Models.Candidate
 {
-	public class CandidateFormModel
+    public class CandidateFormModel
 	{
 		[Required(ErrorMessage = RequiredMessage)]
 		public string UserId { get; set; } = string.Empty;

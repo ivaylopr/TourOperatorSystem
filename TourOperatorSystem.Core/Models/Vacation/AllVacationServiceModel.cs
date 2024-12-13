@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TourOperatorSystem.Core.Models.Vacation
+﻿namespace TourOperatorSystem.Core.Models.Vacation
 {
-	public class AllVacatinsServiceModel
+    public class AllVacatinsServiceModel
 	{
 		public int VacatonsPerPage { get; } = 3;
 

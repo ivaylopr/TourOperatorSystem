@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static TourOperatorSystem.Core.Constants.MessageConstants;
+using static TourOperatorSystem.Infrastructure.Constants.DataConstants;
 
 namespace TourOperatorSystem.Core.Models.Agent
 {

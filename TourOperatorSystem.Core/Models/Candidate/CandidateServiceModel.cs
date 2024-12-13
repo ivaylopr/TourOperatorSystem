@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TourOperatorSystem.Core.Models.Candidate
+﻿namespace TourOperatorSystem.Core.Models.Candidate
 {
-	public class CandidateServiceModel
+    public class CandidateServiceModel
 	{
 		public int Id { get; set; }
 		public string Email { get; set; } = string.Empty;

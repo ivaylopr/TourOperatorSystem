@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TourOperatorSystem.Core.Models.Room
+﻿namespace TourOperatorSystem.Core.Models.Room
 {
-	public class AllRoomsServiceModel
+    public class AllRoomsServiceModel
 	{
 		public int RoomsPerPage { get; } = 3;
 

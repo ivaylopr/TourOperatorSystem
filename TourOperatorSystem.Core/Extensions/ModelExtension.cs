@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using TourOperatorSystem.Core.Contracts;
 
 namespace TourOperatorSystem.Core.Extensions
 {
-	public static class ModelExtensions
+    public static class ModelExtensions
 	{
 		public static string GetInfo(this IHotelModel hotel)
 		{

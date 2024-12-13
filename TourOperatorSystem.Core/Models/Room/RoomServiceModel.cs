@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using static TourOperatorSystem.Core.Constants.MessageConstants;
+using static TourOperatorSystem.Infrastructure.Constants.DataConstants;
 
 namespace TourOperatorSystem.Core.Models.Room
 {
-	public class RoomServiceModel
+    public class RoomServiceModel
 	{
 		public int Id { get; set; }
 		[Required]

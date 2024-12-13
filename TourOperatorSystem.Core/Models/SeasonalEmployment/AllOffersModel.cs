@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TourOperatorSystem.Core.Models.SeasonalEmployment
+﻿namespace TourOperatorSystem.Core.Models.SeasonalEmployment
 {
-	public class AllOffersModel
+    public class AllOffersModel
 	{
 		public int OfferPerPage { get; } = 3;
 		public int CurrentPage { get; init; } = 1;

@@ -1,4 +1,9 @@
-﻿namespace TourOperatorSystem.Core.Models.Vacation
+﻿namespace TourOperatorSystem.Core.Models.Vacation;
+
+using System.ComponentModel.DataAnnotations;
+using TourOperatorSystem.Core.Contracts;
+using static TourOperatorSystem.Core.Constants.MessageConstants;
+using static TourOperatorSystem.Infrastructure.Constants.DataConstants;
 {
 	public class VacationServiceModel : IVacationModel
 	{

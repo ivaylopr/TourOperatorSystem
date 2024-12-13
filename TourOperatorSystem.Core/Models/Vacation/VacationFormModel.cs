@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using TourOperatorSystem.Core.Contracts;
 using TourOperatorSystem.Core.Models.Hotel;
+using TourOperatorSystem.Core.Models.VacationCategory;
+using static TourOperatorSystem.Core.Constants.MessageConstants;
+using static TourOperatorSystem.Infrastructure.Constants.DataConstants;
 
 namespace TourOperatorSystem.Core.Models.Vacation
 {
-	public class VacationFormModel : IVacationModel
+    public class VacationFormModel : IVacationModel
 	{
 		[Required(ErrorMessage = RequiredMessage)]
 		[StringLength(VacationTitleMaxLength,

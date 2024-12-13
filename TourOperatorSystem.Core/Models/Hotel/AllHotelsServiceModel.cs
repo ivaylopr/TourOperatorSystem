@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TourOperatorSystem.Core.Models.Hotel
+﻿namespace TourOperatorSystem.Core.Models.Hotel
 {
-	public class AllHotelsServiceModel
+    public class AllHotelsServiceModel
 	{
 		public int HotelsPerPage { get; } = 3;
 

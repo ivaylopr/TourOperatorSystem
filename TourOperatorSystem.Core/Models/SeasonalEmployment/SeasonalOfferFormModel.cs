@@ -1,15 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TourOperatorSystem.Core.Models.Candidate;
+using static TourOperatorSystem.Core.Constants.MessageConstants;
+using static TourOperatorSystem.Infrastructure.Constants.DataConstants;
 
 namespace TourOperatorSystem.Core.Models.SeasonalEmployment
 {
-	public class SeasonalOfferFormModel
+    public class SeasonalOfferFormModel
 	{
 		[Required(ErrorMessage = RequiredMessage)]
 		[StringLength(SeasonEmploymentTitleMaxLength,
