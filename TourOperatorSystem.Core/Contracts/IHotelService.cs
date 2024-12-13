@@ -17,7 +17,7 @@ namespace TourOperatorSystem.Core.Contracts
 		Task<AllHotelsServiceModel> AllAsync(int hotelsPerPage, int currentPage);
 		Task<IEnumerable<VacationCategoryServiceModel>> AllVacationsCategoriesAsync();
 		Task<bool> VacationCategoryExistAsync(int id);
-		Task<int> CreateHotelAsync(HotelFormModel model, string fileName);
+		Task<int> CreateHotelAsync(HotelFormModel model);
 		Task<HotelServiceModel> GetHotelToDeleteByIdAsync(int id);
 		Task<HotelFormModel?> GetHotelToDEditByIdAsync(int id);
 		Task EditAsync(int id, HotelFormModel model);

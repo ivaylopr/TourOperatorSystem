@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TourOperatorSystem.Core.Contracts;
 using TourOperatorSystem.Controllers;
+using System.Security.Claims;
 
 namespace TourOperatorSystem.Attributes
 {

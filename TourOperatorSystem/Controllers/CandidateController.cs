@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TourOperatorSystem.Attributes;
 using TourOperatorSystem.Core.Contracts;
 using TourOperatorSystem.Core.Models.Candidate;

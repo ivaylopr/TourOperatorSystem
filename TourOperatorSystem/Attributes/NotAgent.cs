@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using TourOperatorSystem.Core.Contracts;
+using System.Security.Claims;
 
 namespace TourOperatorSystem.Attributes
 {

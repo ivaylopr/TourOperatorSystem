@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 using TourOperatorSystem.Core.Contracts;
 using TourOperatorSystem.Core.Models.VacationCategory;
 using static TourOperatorSystem.Core.Constants.MessageConstants;
@@ -39,8 +40,10 @@ namespace TourOperatorSystem.Core.Models.Hotel
 		[Required(ErrorMessage = RequiredMessage)]
 		public int CategoryStars { get; set; }
 		public double? Rating { get; set; }
-		public string Image { get; set; } = string.Empty;
-		[Required(ErrorMessage = RequiredMessage)]
+        [Required(ErrorMessage = RequiredMessage)]
+        [Display(Name = "Image")]
+        public IFormFile Image { get; set; } = null!;
+        [Required(ErrorMessage = RequiredMessage)]
 		[Display(Name = "Vacation category")]
 		public int VacationCategoryId { get; set; }
 		public IEnumerable<VacationCategoryServiceModel> VacationCategories { get; set; } = new List<VacationCategoryServiceModel>();
