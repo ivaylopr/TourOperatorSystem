@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TourOperatorSystem.Core.Models.Agent.AgentServiceModel>
+
+@{
+    ViewData["Title"] = "All Agents";
+}
+
+<h1>All Agents</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Rating</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var agent in Model)
+        {
+            <tr>
+                <td>@agent.Id</td>
+                <td>@agent.PhoneNumber</td>
+                <td>@agent.Email</td>
+                <td>@(agent.IsActive ? "Yes" : "No")</td>
+                <td>@agent.Rating</td>
+                <td>
+                    <form asp-action="ChangeStatus" asp-route-id="@agent.Id" method="post">
+                        <button type="submit">Change Status</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

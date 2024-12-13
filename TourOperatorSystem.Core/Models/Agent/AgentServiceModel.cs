@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using static TourOperatorSystem.Infrastructure.Constants.DataConstants;
+using static TourOperatorSystem.Core.Constants.MessageConstants;
 
 namespace TourOperatorSystem.Core.Models.Agent
 {
-	public class AgentServiceModel
+    public class AgentServiceModel
 	{
 		[Required(ErrorMessage = RequiredMessage)]
 		public int Id { get; set; }
