@@ -58,8 +58,8 @@ namespace TourOperatorSystem.Controllers
                     return Unauthorized();
                 }
                 DateTime enrollmentDate = DateTime.Now;
-                if (!DateTime.TryParseExact(model.EnrollmentDeadline,
-                    ,
+                if (!DateTime.TryParseExact(model.EnrollmentDeadline, 
+                    Infrastructure.Constants.DataConstants.DateFormat,
                     CultureInfo.InvariantCulture,
                     DateTimeStyles.None,
                     out enrollmentDate))

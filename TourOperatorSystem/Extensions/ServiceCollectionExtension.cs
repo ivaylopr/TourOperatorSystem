@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TourOperatorSystem.Core.Contracts;
+using TourOperatorSystem.Core.Services;
 using TourOperatorSystem.Infrastructure.Data;
 using TourOperatorSystem.Infrastructure.Data.Common;
 
@@ -9,7 +11,12 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-
+            services.AddScoped<IHotelService, HotelService>();
+            services.AddScoped<IVacationService, VacationService>();
+            services.AddScoped<IAgentService, AgentService>();
+            services.AddScoped<ISeasonalEmploymentService, SeasonalEmploymentService>();
+            services.AddScoped<IRoomService, RoomSer>();
+            services.AddScoped<ICandidateService, CandidateService>();
             return services;
         }
 
