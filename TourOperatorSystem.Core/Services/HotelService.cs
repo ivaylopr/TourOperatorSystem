@@ -197,11 +197,11 @@ namespace TourOperatorSystem.Core.Services
                 }).FirstAsync();
         }
 
-        public async Task<string> GetImageAsync(int id)
+        public async Task<byte[]> GetImageAsync(int id)
         {
             return await repository.AllReadOnly<Hotel>()
                 .Where(h => h.Id == id)
-                .Select(h => Convert.ToBase64String(h.Image ?? Array.Empty<byte>()))
+                .Select(h => h.Image)
                 .FirstAsync();
         }
 
@@ -249,6 +249,32 @@ namespace TourOperatorSystem.Core.Services
         public async Task<bool> VacationCategoryExistAsync(int id)
         {
             return await repository.AllReadOnly<VacationCategory>().AnyAsync(vc => vc.Id == id);
+        }
+
+        public async Task<byte[]> ConvertFromFile(IFormFile data)
+        {
+            byte[] imageData;
+            await using (var memoryStream = new MemoryStream())
+            {
+                await data.CopyToAsync(memoryStream);
+                imageData = memoryStream.ToArray();
+            }
+            return imageData;
+        }
+
+        public IFormFile ConvertFromByteArray(byte[] data, string fileName, string contentType = "application/octet-stream")
+        {
+            // Създаване на MemoryStream от byte[]
+            var stream = new MemoryStream(data);
+
+            // Създаване на FormFile
+            var formFile = new FormFile(stream, 0, data.Length, "file", fileName)
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = contentType
+            };
+
+            return formFile;
         }
     }
     

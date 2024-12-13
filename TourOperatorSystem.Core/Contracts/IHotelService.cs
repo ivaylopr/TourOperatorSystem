@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,10 @@ namespace TourOperatorSystem.Core.Contracts
 		Task<HotelFormModel?> GetHotelToDEditByIdAsync(int id);
 		Task EditAsync(int id, HotelFormModel model);
 		Task DeleteHotelByIdAsync(int id);
-		Task<string> GetImageAsync(int id);
+		Task<byte[]> GetImageAsync(int id);
 		Task<IEnumerable<HotelTypesServiceModel>> AllHotelsTypesAsync();
 		Task<IEnumerable<HotelTypesServiceModel>> GetAllHotelsAsync();
+		Task<byte[]> ConvertFromFile(IFormFile data);
+		IFormFile ConvertFromByteArray(byte[] data, string fileName, string contentType = "application/octet-stream");
 	}
 }

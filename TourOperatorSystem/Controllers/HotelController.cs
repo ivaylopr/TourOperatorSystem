@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Security.Claims;
 using TourOperatorSystem.Attributes;
 using TourOperatorSystem.Core.Contracts;
@@ -106,46 +105,34 @@ namespace TourOperatorSystem.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, HotelFormModel model, IFormFile imageFile)
+        public async Task<IActionResult> Edit(int id, HotelFormModel model, IFormFile? imageFile)
         {
             if (await agentService.AgentWithIdExistsAsync(User.Id()) == false ||
                 User.IsAdmin() == false)
             {
                 return Unauthorized();
             }
+
             if (await hotelService.HotelExistByIdAsync(id) == false)
             {
                 return BadRequest();
             }
 
-            if (imageFile == null)
-            {
-                model.Image = await hotelService.GetImageAsync(id);
-                ModelState["imageFile"].ValidationState = ModelValidationState.Valid;
-            }
+            byte[]? imageData = null;
 
             if (imageFile != null && imageFile.Length > 0)
             {
-                var filledModel = await hotelService.GetHotelToDeleteByIdAsync(id);
-                string webRootPath = _webHostEnvironment.WebRootPath;
-                string filePathToDelete = filledModel.Image;
-                string fullPathToDelete = Path.Combine(webRootPath, filePathToDelete.TrimStart('/'));
+                
+                model.Image = imageFile;
+            }
+            else
+            {
 
-                if (System.IO.File.Exists(fullPathToDelete))
+                imageData = await hotelService.GetImageAsync(id);
+                if (imageData != null)
                 {
-                    System.IO.File.Delete(fullPathToDelete);
+                    model.Image = hotelService.ConvertFromByteArray(imageData,model.Name+$"{imageData.GetType}");
                 }
-
-                string fileName = string.Empty;
-                var uniqueFileName = model.Name.Replace(' ', '_') + "new" + imageFile.FileName;
-                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    imageFile.CopyTo(fileStream);
-                }
-                fileName = uniqueFileName;
-                string filePathValue = $"/images/{fileName}";
-                model.Image = filePathValue;
             }
 
             var categoryExist = await hotelService.VacationCategoryExistAsync(model.VacationCategoryId);
@@ -160,6 +147,8 @@ namespace TourOperatorSystem.Controllers
                 model.VacationCategories = await hotelService.AllVacationsCategoriesAsync();
                 return View(model);
             }
+
+
 
             await hotelService.EditAsync(id, model);
 
