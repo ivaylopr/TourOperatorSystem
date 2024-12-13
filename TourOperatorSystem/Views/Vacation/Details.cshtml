@@ -1,0 +1,39 @@
+﻿@model VacationServiceModel
+
+@{
+    ViewBag.Title = "Vacation Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Title)</dt>
+        <dd>@Html.DisplayFor(model => model.Title)</dd>
+        <dt>Location</dt>
+        <dd>@Model.Location</dd>
+        <dt>Price</dt>
+        <dd>@Model.Price</dd>
+        <dt>Enrollment Dead line</dt>
+        <dd>@Model.EnrollmentDeadline</dd>
+        <dt>Vacation starts on</dt>
+        <dd>@Model.StartDate</dd>
+        <dt>Vacation ends on</dt>
+        <dd>@Model.EndDate</dd>
+        <dt>All inclusive</dt>
+        <dd>@(Model.AllInclusive.HasValue ? (Model.AllInclusive.Value ? "Yes" : "No") : "")</dd>
+        <dt>Vacation description</dt>
+        <dd>@Model.Description</dd>
+        <dt>Is Active</dt>
+        <dd>@(Model.IsActive ? "Yes" : "No")</dd>
+        <dt>Agent contacts</dt>
+        <dd>Email: @Model.AgentEmail, Phone number: @Model.AgentPhoneNumber</dd>
+        <dt>@Model.HotelName</dt>
+        <dd><img src="@Model.HotelImage" alt="Hotel Image" width="500" height="200" /></dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "All") 
+</p>

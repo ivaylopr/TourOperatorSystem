@@ -1,6 +1,49 @@
-﻿<ul class="navbar-nav flex-grow-1">
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-    </li>
-    
+﻿@inject IAgentService agentService
+<ul class="navbar-nav flex-grow-1">
+	<li class="nav-item">
+		<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+	</li>
+	@if (this.User?.Identity?.IsAuthenticated ?? false)
+	{
+
+		<li class="nav-item">
+			<a class="nav-link text-dark" asp-area="" asp-controller="Hotel" asp-action="All">All Hotels</a>
+			@if (await agentService.AgentWithIdExistsAsync(User.Id()))
+			{
+				<a class="nav-link text-dark" asp-area="" asp-controller="Hotel" asp-action="Add">Add Hotels</a>
+			}
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-dark" asp-area="" asp-controller="Vacation" asp-action="All">All Vacation</a>
+			@if ( await agentService.AgentWithIdExistsAsync(User.Id())==false)
+			{
+				<a class="nav-link text-dark" asp-area="" asp-controller="Vacation" asp-action="Joined">My vacations</a>
+			}
+			@if (await agentService.AgentWithIdExistsAsync(User.Id()))
+			{
+				<a class="nav-link text-dark" asp-area="" asp-controller="Vacation" asp-action="Add">Add Vacation</a>
+			}
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-dark" asp-area="" asp-controller="Seasonal" asp-action="All">All season offers</a>
+
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="All">All rooms in site</a>
+			@if (await agentService.AgentWithIdExistsAsync(User.Id()))
+			{
+				<a class="nav-link text-dark" asp-area="" asp-controller="Room" asp-action="Add">Add Room</a>
+			}
+		</li>
+		@if (User.IsAdmin()==true)
+		{
+			<li class="nav-item">
+				<a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Home">Admin Area</a>
+				
+			</li>
+		}
+	}
 </ul>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

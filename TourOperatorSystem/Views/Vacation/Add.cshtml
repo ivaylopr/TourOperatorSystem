@@ -1,0 +1,13 @@
+﻿@model VacationFormModel
+@{
+	ViewData["Title"] = "Add Vacation";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Vacation" asp-action="Add">
+	<partial name="_VacationFormPartial" model="@Model" />
+</form>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+	
+}

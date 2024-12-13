@@ -1,0 +1,39 @@
+﻿@model AllVacatinsServiceModel
+
+@{
+	ViewData["Title"] = "My vacations";
+}
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+@if (Model.Vacations.Any() == false)
+{
+    <h3 class="text-center">You didn't join any vacation yet!</h3>
+}
+
+<div class="row">
+    @foreach (var item in Model.Vacations)
+    {
+        <partial name="_VacationPartial" model="@item" />
+    }
+</div>
+@if (Model.TotalVacationsCount > Model.VacatonsPerPage)
+{
+	var maxPage = Math.Ceiling((double)Model.TotalVacationsCount /
+		Model.VacatonsPerPage);
+	<div class="row mt-5">
+		<div class="col-md-6 d-flex justify-content-center">
+			@if (Model.CurrentPage > 1)
+			{
+				<a class="btn btn-primary" asp-controller="Vacation" asp-action="Joined" asp-route-currentPage="@(Model.CurrentPage-1)">Previous</a>
+			}
+		</div>
+		<div class="col-md-6 d-flex justify-content-center">
+			@if (Model.CurrentPage < maxPage)
+			{
+				<a class="btn btn-primary" asp-controller="Vacation" asp-action="Joined" asp-route-currentPage="@(Model.CurrentPage + 1)">Next</a>
+
+			}
+		</div>
+	</div>
+}
