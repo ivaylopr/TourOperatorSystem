@@ -13,7 +13,11 @@
         {
             <div class="col-md-4 mb-3">
                 <div class="card">
-                    <img src="@hotel.Image" class="card-img-top" alt="@hotel.Name" width="500" height="200" alt="Description">
+                    <img src="data:image/png;base64,@hotel.Image"
+                         class="card-img-top"
+                         alt="@hotel.Name"
+                         width="500"
+                         height="200" />
                     <div class="card-body">
                         <h5 class="card-title">@hotel.Name</h5>
                         <p class="card-text">@hotel.Location</p>
