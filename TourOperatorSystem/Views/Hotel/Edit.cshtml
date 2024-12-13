@@ -1,0 +1,26 @@
+﻿@model HotelFormModel
+@{
+	ViewData["Title"] = "Edit Hotel";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+<form method="post" enctype="multipart/form-data" asp-controller="Hotel" asp-action="Edit">
+	<partial name="_HotelFormPartial" model="@Model" />
+	</form>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+	<script>
+		function previewImage() {
+			var file = document.getElementById('imageFile').files[0];
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				document.getElementById('previewImage').src = e.target.result;
+				document.getElementById('previewImage').style.display = 'block';
+			}
+			reader.readAsDataURL(file);
+		}
+
+		document.getElementById('imageFile').addEventListener('change', previewImage);
+	</script>
+}

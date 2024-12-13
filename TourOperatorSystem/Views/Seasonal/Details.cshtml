@@ -1,0 +1,45 @@
+﻿@model SeasonOfferDetailsViewModel
+
+@{
+    ViewData["Title"] = "Season Offer Details";
+}
+
+<h1>@Model.Title</h1>
+
+<div>
+    <h4>Description:</h4>
+    <p>@Model.Description</p>
+</div>
+
+<div>
+    <h4>Hourly Wage:</h4>
+    <p>@Model.HourlyWage</p>
+</div>
+
+<div>
+    <h4>Start Date:</h4>
+    <p>@Model.StartDate</p>
+</div>
+
+<div>
+    <h4>End Date:</h4>
+    <p>@Model.EndDate</p>
+</div>
+
+<div>
+    <h4>Agent Phone Number:</h4>
+    <p>@Model.AgentPhoneNumber</p>
+</div>
+
+<div>
+    <h4>Hotel:</h4>
+    <p>@Model.HotelName</p>
+</div>
+
+<div>
+    <h4>Is Active:</h4>
+    <p>@Model.IsActive</p>
+</div>
+
+<a asp-area="" asp-controller="Seasonal" asp-action="All" 
+   class="btn btn-warning">Back</a>

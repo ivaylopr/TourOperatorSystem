@@ -1,0 +1,78 @@
+﻿@model HotelDetailsServiceModel;
+@{
+	ViewBag.Title = "Hotel Details";
+}
+
+<head>
+	<title>@ViewBag.Title</title>
+
+</head>
+<body>
+	<h1>@Model.Name</h1>
+	<h3>@Model.CategoryStars stars</h3>
+	<p>@Model.HotelReview</p>
+
+	<h2>Additional amenities</h2>
+	<ul>
+		<li>
+			Spa: @if (Model.Spa)
+			{
+				<span>Available</span>
+			}
+			else
+			{
+				<span>Not available</span>
+			}
+		</li>
+		<li>
+			Pool: @if (Model.Pool)
+			{
+				<span>Available</span>
+			}
+			else
+			{
+				<span>Not available</span>
+			}
+		</li>
+		<li>
+			Children Animators: @if (Model.ChildrenAnimators)
+			{
+				<span>Available</span>
+			}
+			else
+			{
+				<span>Not available</span>
+			}
+		</li>
+	</ul>
+
+	<h2>All-Inclusive Price</h2>
+	<p>
+		@if (Model.AllInclusivePrice.HasValue)
+		{
+			<span>@Model.AllInclusivePrice.Value.ToString("C", System.Globalization.CultureInfo.CreateSpecificCulture("gr-GR"))</span>
+		}
+		else
+		{
+			<span>Not Available</span>
+		}
+	</p>
+
+	<h2>Location</h2>
+	<p>@Model.Location</p>
+
+	<h2>Rating</h2>
+	<p>
+		@if (Model.Rating.HasValue)
+		{
+			<span>@Model.Rating.Value.ToString()</span>
+		}
+		else
+		{
+			<span>Not available</span>
+		}
+	</p>
+
+	<img src="@Model.Image" alt="@Model.Name" width="500" height="200" alt="Description" />
+
+</body>

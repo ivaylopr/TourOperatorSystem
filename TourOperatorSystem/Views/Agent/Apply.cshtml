@@ -1,0 +1,32 @@
+﻿@model AgentFormServiceModel
+
+@{
+    ViewBag.Title = "Create Agent";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Apply" method="post">
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="control-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MotivationLetter" class="control-label"></label>
+        <textarea asp-for="MotivationLetter" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="MotivationLetter" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Apply for agent" class="btn btn-primary" />
+    </div>
+</form>

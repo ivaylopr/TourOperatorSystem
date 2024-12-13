@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AgentServiceModel>
+
+@{
+	ViewBag.Title = "Agents";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="card-columns">
+	@foreach (var agent in Model)
+	{
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Phone Number: @agent.PhoneNumber</h5>
+				<p class="card-text">Email: @agent.Email</p>
+				<p class="card-text">Is Active: @(agent.IsActive ? "Yes" : "No")</p>
+				<p class="card-text">Rating: @agent.Rating</p>
+			</div>
+		</div>
+	}
+	@* @if (Model.Comments.Any())
+	{
+		<h3>Comments</h3>
+		<div class="card-columns">
+			@foreach (var comment in Model.Comments)
+			{
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">User: @Model.Email</h5>
+						<p class="card-text">@comment.Review</p>
+						<p class="card-text">Rating: @comment.Rating</p>
+					</div>
+				</div>
+			}
+		</div>
+	}
+	else
+	{
+		<p>No comments available</p>
+	} *@
+</div>

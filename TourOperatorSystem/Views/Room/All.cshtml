@@ -1,0 +1,50 @@
+﻿@model AllRoomsServiceModel
+@inject IAgentService agentService
+@inject IRoomService roomService
+@{
+    ViewData["Title"] = "All Rooms";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+
+<div class="container">
+    <div class="row">
+        @foreach (var room in Model.Rooms)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">@room.Title</p>
+                        <p class="card-text">@room.Description</p>
+                        <p class="card-text">@room.AdditionalExtras</p>
+                        <p class="card-text">@room.Price</p>
+                        <p class="card-text">@room.HotelName</p>
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@if (Model.TotalRoomslCount > Model.RoomsPerPage)
+{
+    var maxPage = Math.Ceiling((double)Model.TotalRoomslCount /
+        Model.RoomsPerPage);
+    <div class="row mt-5">
+        <div class="col-md-6 d-flex justify-content-center">
+            @if (Model.CurrentPage > 1)
+            {
+                <a class="btn btn-primary" asp-controller="Room" asp-action="All" asp-route-currentPage="@(Model.CurrentPage-1)">Previous</a>
+            }
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            @if (Model.CurrentPage < maxPage)
+            {
+                <a class="btn btn-primary" asp-controller="Room" asp-action="All" asp-route-currentPage="@(Model.CurrentPage + 1)">Next</a>
+
+            }
+        </div>
+    </div>
+}
