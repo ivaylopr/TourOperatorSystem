@@ -15,7 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IVacationService, VacationService>();
             services.AddScoped<IAgentService, AgentService>();
             services.AddScoped<ISeasonalEmploymentService, SeasonalEmploymentService>();
-            services.AddScoped<IRoomService, RoomSer>();
+            services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ICandidateService, CandidateService>();
             return services;
         }
@@ -35,8 +35,17 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration config)
         {
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+            })
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
 
             return services;
         }
